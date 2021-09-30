@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -eu;
+
+cd `dirname ${0}`;
+rm -rf ./tmp;
+mkdir ./tmp;
+python3 -m venv ./tmp;
+./tmp/bin/pip install awscli;
+rm -rf ./lambda-layer;
+mkdir lambda-layer;
+cp ./tmp/bin/aws ./lambda-layer;
+cp -r ./tmp/lib/python3.*/site-packages/* ./lambda-layer;
+rm -rf ./tmp;
+cat ./lambda-layer/aws |(rm ./lambda-layer/aws; sed '1s/.*/\#\!\/var\/lang\/bin\/python/' > ./lambda-layer/aws)

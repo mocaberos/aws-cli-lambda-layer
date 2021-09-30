@@ -1,0 +1,37 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - export PATH=$PATH:$(pwd)/vendor/tools/codebuild
+  build:
+    commands:
+      - |
+        #
+        # Publish layer.
+        #
+        set -eu;
+        if trigger is merge master ?; then
+          zip -r aws-cli-layer.zip ./lambda-layer;
+          aws lambda publish-layer-version \
+            --layer-name aws-cli \
+            --description "for aws cli" \
+            --zip-file fileb://aws-cli-layer.zip \
+            --compatible-runtimes python3.6 python3.7 python3.8 python3.9;
+        fi;
+      - |
+        #
+        # Update lambda config.
+        #
+        set -eu;
+        if trigger is merge master ?; then
+        fi;
+  post_build:
+    commands:
+      - |
+        #
+        # Notify the result.
+        #
+        set -eu;
+        notify-update-lambda;
+        notify-build-result aws-lambda;
