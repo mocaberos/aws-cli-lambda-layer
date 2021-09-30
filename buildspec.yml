@@ -33,5 +33,4 @@ phases:
         # Notify the result.
         #
         set -eu;
-        notify-update-lambda;
-        notify-build-result aws-lambda;
+        notify-update-lambda-layer aws-cli;
