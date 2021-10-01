@@ -4,6 +4,9 @@ AWS Lambda上で aws-cliコマンドを使用するためのレイヤー
 [![Build Status](https://codebuild.ap-northeast-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoidU1kOERjTE5telllanRYcEs4Vy9qSXZGNzRSRGNRUFo3M0R3Mk8vSVNjeWlrYThKMm0ydlZEOFN5WEdEbUxjRG5LRTlWUjdaT2k0andUV0RBQk92WWFFPSIsIml2UGFyYW1ldGVyU3BlYyI6ImJKTmo1SGRveGZLdTR4eWQiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)](https://ap-northeast-1.console.aws.amazon.com/codesuite/codebuild/projects/aws-cli-lambda-layer)
 
 ## 使い方
+
+https://qiita.com/mocaberos/items/79e4c1ae5e7420de397d
+
 下記のコマンドを使用するとaws-cliという名前でLambdaレイヤーがデプロイされます。
 python3のランタイムを使用したLambda関数に付けると、Lambda関数からaws-cliを使用することができます。
 ```shell
