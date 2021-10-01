@@ -25,6 +25,7 @@ phases:
         #
         set -eu;
         if trigger is merge master ?; then
+          aws lambda update-function-configuration --function-name slack_cmd --layers $(get-latest-layer-version-arn)
         fi;
   post_build:
     commands:
